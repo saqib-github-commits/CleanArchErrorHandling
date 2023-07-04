@@ -6,6 +6,7 @@ import com.cleanarch.errorhandling.common.Resource
 import com.cleanarch.errorhandling.models.Book
 import com.cleanarch.errorhandling.repository.BooksRepository
 import com.cleanarch.errorhandling.repository.BooksRepositoryImpl
+import com.cleanarch.errorhandling.ui.common.UiDataState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,8 +17,8 @@ class BooksViewModel (
     private val booksRepository: BooksRepository = BooksRepositoryImpl()
 ): ViewModel() {
 
-    private val _books = MutableStateFlow<List<Book>>(emptyList())
-    val books: StateFlow<List<Book>> = _books.asStateFlow()
+    private val _books = MutableStateFlow<UiDataState<List<Book>>>(UiDataState.Loading())
+    val books: StateFlow<UiDataState<List<Book>>> = _books.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -25,10 +26,8 @@ class BooksViewModel (
                 .catch { }
                 .collect {
                     when (it) {
-                        is Resource.Success -> _books.value = it.data
-                        is Resource.Error -> {
-                            // Show Error on UI Layer
-                        }
+                        is Resource.Success -> _books.value = UiDataState.Loaded(it.data)
+                        is Resource.Error -> _books.value = UiDataState.Error("An Error occurred while loading data, Please try again")
                     }
                 }
         }
