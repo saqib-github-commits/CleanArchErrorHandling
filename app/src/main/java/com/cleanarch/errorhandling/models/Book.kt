@@ -1,5 +1,5 @@
 package com.cleanarch.errorhandling.models
 
-data class Books(
+data class Book (
     val title: String
 )

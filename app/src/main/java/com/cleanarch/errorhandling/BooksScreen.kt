@@ -14,13 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cleanarch.errorhandling.models.Books
+import com.cleanarch.errorhandling.models.Book
 import com.cleanarch.errorhandling.viewModel.BooksViewModel
 
 @Composable
 fun NewsScreen(viewModel: BooksViewModel = BooksViewModel()) {
 
-    val books by viewModel.books.collectAsState() //TODO: with lifecycle aware api?
+    val books by viewModel.books.collectAsState()
     LazyColumn {
         items(books) { BookCard(it) }
     }
@@ -28,7 +28,7 @@ fun NewsScreen(viewModel: BooksViewModel = BooksViewModel()) {
 }
 
 @Composable
-fun BookCard(books: Books) {
+fun BookCard(books: Book) {
     Row(
         modifier = Modifier
             .padding(8.dp)
@@ -43,5 +43,5 @@ fun BookCard(books: Books) {
 @Preview
 @Composable
 fun PreviewBookCard() {
-    BookCard(books = Books("title"))
+    BookCard(books = Book("title"))
 }
