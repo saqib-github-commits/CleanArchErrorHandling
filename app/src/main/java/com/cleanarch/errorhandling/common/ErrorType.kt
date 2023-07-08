@@ -12,7 +12,7 @@ sealed class ErrorType {
 
         object Server : Api()
 
-        object Unknown: Api()
-
     }
+
+    object Unknown: ErrorType()
 }

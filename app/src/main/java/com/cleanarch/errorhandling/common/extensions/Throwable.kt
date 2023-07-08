@@ -14,9 +14,9 @@ fun Throwable.toErrorType(): ErrorType {
             ErrorCodes.Http.ResourceNotFound -> ErrorType.Api.NotFound
             ErrorCodes.Http.InternalServer -> ErrorType.Api.Server
             ErrorCodes.Http.ServiceUnavailable -> ErrorType.Api.ServiceUnavailable
-            else -> ErrorType.Api.Unknown
+            else -> ErrorType.Unknown
         }
-        else -> ErrorType.Api.Unknown
+        else -> ErrorType.Unknown
     }
 
 }

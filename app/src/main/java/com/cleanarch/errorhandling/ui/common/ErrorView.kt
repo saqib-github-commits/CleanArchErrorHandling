@@ -12,15 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cleanarch.errorhandling.R
 
 @Composable
-fun ErrorView(message: String, action: () -> Unit) {
+fun ErrorView(errorText: ErrorText, action: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = message)
+        Text(text = errorText.asString())
         Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = {
             action() }
@@ -33,5 +34,5 @@ fun ErrorView(message: String, action: () -> Unit) {
 @Composable
 @Preview
 fun PreviewErrorView() {
-    ErrorView(message = "There is an error.",) { }
+    ErrorView(ErrorText.StringResource(R.string.error_general)) { }
 }

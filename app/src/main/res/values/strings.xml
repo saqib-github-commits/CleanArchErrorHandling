@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CleanArchErrorHandling</string>
+    <string name="error_network_unavailable">You are not connected to internet, Please try again.</string>
+    <string name="error_service_unavailable">Currently Service is not available, Please try again later.</string>
+    <string name="error_resource_not_found">Required information is not available at the moment, Please try again later.</string>
+    <string name="error_server">There is some unknown error happened, if it happens again then please report, Please try again.</string>
+    <string name="error_general">There was some issue loading information, Please try again.</string>
 </resources>
