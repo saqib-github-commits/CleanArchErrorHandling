@@ -6,18 +6,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import okhttp3.ResponseBody
-import retrofit2.HttpException
-import retrofit2.Response
 import java.io.IOException
-import java.net.HttpRetryException
 import kotlin.random.Random
 
-interface BooksApi {
+interface BooksRemoteDataSource {
     fun fetchBooks(): Flow<Resource<List<Book>>>
 }
 
-class BooksApiImpl: BooksApi {
+class BooksRemoteDataSourceImpl: BooksRemoteDataSource {
 
     override fun fetchBooks() = flow {
         when (Random.nextBoolean()) {
