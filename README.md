@@ -6,8 +6,8 @@ This github repo is linked with medium Article wrote about this topic whose link
 
 
 ## Frameworks
-Kotlin Flows
-Jetpack Compose
+- Kotlin Flows
+- Jetpack Compose
 
 
 ## Sources 
